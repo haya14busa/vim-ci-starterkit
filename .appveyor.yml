@@ -2,6 +2,7 @@ version: 1.0.{build}
 build: off
 test_script:
   - ps: >-
+
     git clone --quiet https://github.com/thinca/vim-themis --branch v1.4.1 --single-branch --depth 1 themis
 
     git clone --quiet https://github.com/vim-jp/vital.vim.git vital
