@@ -2,11 +2,13 @@ vim-ci-starterkit
 =================
 
 [![Build Status](https://travis-ci.org/haya14busa/vim-ci-starterkit.svg?branch=master)](https://travis-ci.org/haya14busa/vim-ci-starterkit)
+[![Build status](https://ci.appveyor.com/api/projects/status/n0u3olk1x8uet6u8?svg=true)](https://ci.appveyor.com/project/haya14busa/vim-ci-starterkit)
 
 This project template is a skeleton for a Vim plugin development for CI
 
 ### Supported CI
 - https://travis-ci.org/
+- http://www.appveyor.com/
 
 Testing Framework
 -----------------
