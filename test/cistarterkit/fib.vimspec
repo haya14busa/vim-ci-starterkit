@@ -5,12 +5,13 @@ Describe cistarterkit/fib
     let Random = V.import('Random')
     let BigNum = V.import('Data.BigNum')
     let ScriptLocal = V.import('Vim.ScriptLocal')
+    let sfuncs = ScriptLocal.sfuncs('autoload/cistarterkit/fib.vim')
   End
 
   Describe s:fib3(n)
 
     Before all
-      let Fib3 = ScriptLocal.sfuncs('autoload/cistarterkit/fib.vim').fib3
+      let Fib3 = sfuncs.fib3
     End
 
     It returns result as String
