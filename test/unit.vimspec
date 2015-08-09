@@ -10,7 +10,7 @@ Describe unit
   Describe s:fib3(n)
 
     Before all
-      let Fib3 = ScriptLocal.sfuncs('autoload/cistarterkit.vim').fib3
+      let Fib3 = ScriptLocal.sfuncs('autoload/cistarterkit/fib.vim').fib3
     End
 
     It returns result as String
