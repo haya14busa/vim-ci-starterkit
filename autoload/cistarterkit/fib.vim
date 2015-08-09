@@ -10,6 +10,11 @@ set cpo&vim
 let s:V = vital#of('vital')
 let s:BigNum = s:V.import('Data.BigNum')
 
+" :DOCTEST https://github.com/Rykka/doctest.vim
+" >>> echo s:fib3(1)
+" 1
+" >>> echo s:fib3(10)
+" 55
 function! s:fib3(n) abort
   let table = map([0, 1], 's:BigNum.from_num(v:val)')
   " range(2, 0) => E727: Start past end
