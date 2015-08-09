@@ -5,6 +5,9 @@ env:
 sudo: false
 cache: pip
 
+python:
+  - "3.4"
+
 addons:
   apt:
     packages:
