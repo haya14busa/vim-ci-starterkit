@@ -1,0 +1,59 @@
+" testing framework: https://github.com/thinca/vim-themis
+Describe cistarterkit
+
+  Before all
+    let V = vital#of('vital')
+    let Random = V.import('Random')
+    let BigNum = V.import('Data.BigNum')
+    let ScriptLocal = V.import('Vim.ScriptLocal')
+  End
+
+  Describe mapping
+    It provide <Plug>(cistarterkit-test)
+      Assert Equals(maparg('<Plug>(cistarterkit-test)', 'nvo'), ":<C-U>echo 'hi'<CR>")
+    End
+  End
+
+
+  Describe #fib(n)
+
+    It 1st fibonacci number is 1
+      " Assert Equals({actual}, {expect})
+      Assert Equals(cistarterkit#fib(1), 1)
+    End
+
+    It 2nd fibonacci number is 1
+      Assert Equals(cistarterkit#fib(2), 1)
+    End
+
+    It 10th fibonacci number is 55
+      Assert Equals(cistarterkit#fib(10), 55)
+    End
+
+    It 46th fibonacci number is 1836311903
+      Assert Equals(cistarterkit#fib(46), 1836311903)
+    End
+
+    It 47th fibonacci number is 2971215073
+      Assert Equals(cistarterkit#fib(47), 2971215073)
+    End
+
+    It 47th fibonacci number is 2971215073 but...
+      Skip 'because it fails -> unit.vimspec'
+      Assert Equals(string(cistarterkit#fib(47)), '2971215073', 'string...?')
+    End
+
+    It property
+      Skip 'because it fails -> unit.vimspec'
+      for _ in range(100)
+        let n = Random.sample(range(1000))
+        Assert Equals(
+        \   cistarterkit#fib(n),
+        \   cistarterkit#fib(n - 1) + cistarterkit#fib(n - 2))
+      endfor
+    End
+
+  End
+
+
+End

@@ -1,0 +1,42 @@
+Describe unit
+
+  Before all
+    let V = vital#of('vital')
+    let Random = V.import('Random')
+    let BigNum = V.import('Data.BigNum')
+    let ScriptLocal = V.import('Vim.ScriptLocal')
+  End
+
+  Describe s:fib3(n)
+
+    Before all
+      let Fib3 = ScriptLocal.sfuncs('autoload/cistarterkit.vim').fib3
+    End
+
+    It returns result as String
+      Assert Equals('1', Fib3(1))
+      Assert Equals('1', Fib3(2))
+      Assert Equals('2', Fib3(3))
+    End
+
+
+    It handle large number
+      Assert Equals('2971215073', Fib3(47))
+    End
+
+    It property
+      for _ in range(100)
+        let n = Random.sample(range(2, 100))
+        " print while testing with themis
+        " :verbose echo n
+        " or you can use undocumented API(!?)
+        " :call themis#log(n)
+        Assert Equals(
+        \   Fib3(n),
+        \   BigNum.to_string(BigNum.add(Fib3(n - 1), Fib3(n - 2))))
+      endfor
+    End
+
+  End
+
+End
