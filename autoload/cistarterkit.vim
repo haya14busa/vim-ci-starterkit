@@ -23,7 +23,8 @@ endfunction
 " autoload function
 function! cistarterkit#fib(...) abort
   " return call(function('s:fib'), a:000)
-  return call(function('s:fib2'), a:000)
+  let unused = 0
+  return call(function("s:fib2"), a:000)
 endfunction
 
 let &cpo = s:save_cpo
