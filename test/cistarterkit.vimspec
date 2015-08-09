@@ -1,4 +1,12 @@
-" testing framework: https://github.com/thinca/vim-themis
+" Testing framework: https://github.com/thinca/vim-themis
+" Run test with QuickRun. write folloing lines in your vimrc:
+"   let g:quickrun_config = {
+"   \ 'vimspec' : {
+"   \   'command' : 'themis',
+"   \   'cmdopt'  : '--runtimepath ".." --runtimepath ~/.vim/bundle/vital.vim',
+"   \   'exec'    : '%c %o %s:p | tr -d "\r"'
+"   \ }
+"   \}
 Describe cistarterkit
 
   Before all
