@@ -1,28 +1,25 @@
 version: 1.0.{build}
-
 build: off
-
-# Do not build on tags (GitHub only)
+deploy: off
 skip_tags: true
-
-# set clone depth
-clone_depth: 5
-
+clone_depth: 1
+environment:
+  matrix:
+    - VIM_URL: http://files.kaoriya.net/vim/vim74-kaoriya-win64.zip
+    - VIM_URL: http://files.kaoriya.net/vim/2011/vim73-kaoriya-win64-20110306.zip
 install:
-  - ps: >-
-    git clone --quiet https://github.com/thinca/vim-themis --branch v1.4.1 --single-branch --depth 1 themis
-    git clone --quiet https://github.com/vim-jp/vital.vim.git vital
-    $zip = $Env:APPVEYOR_BUILD_FOLDER + '\vim.zip'
-    $vim = $Env:APPVEYOR_BUILD_FOLDER + '\vim'
-    (New-Object Net.WebClient).DownloadFile('http://files.kaoriya.net/vim/vim74-kaoriya-win64.zip', $zip)
-    [Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem') > $null
-    [System.IO.Compression.ZipFile]::ExtractToDirectory($zip, $vim)
-    $Env:THEMIS_VIM = $vim + '\vim74-kaoriya-win64\vim.exe'
-
+  - git clone --quiet https://github.com/thinca/vim-themis --branch v1.4.1 --single-branch --depth 1 themis
+  - git clone --quiet https://github.com/vim-jp/vital.vim.git vital
+  - ps: |
+      $zip = $Env:APPVEYOR_BUILD_FOLDER + '\vim.zip'
+      $vim = $Env:APPVEYOR_BUILD_FOLDER + '\vim\'
+      (New-Object Net.WebClient).DownloadFile($Env:VIM_URL, $zip)
+      [Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem') > $null
+      [System.IO.Compression.ZipFile]::ExtractToDirectory($zip, $vim)
+      $Env:THEMIS_VIM = $vim + (Get-ChildItem $vim).Name + '\vim.exe'
 before_test:
-  - ps: >-
-    $Env:THEMIS_VIM --version
-
+  - ps: |
+      & $Env:THEMIS_VIM --version
 test_script:
-  - ps: >-
-    .\themis\bin\themis.bat -r --runtimepath vital --reporter spec
+  - ps: |
+      .\themis\bin\themis.bat -r --runtimepath vital --reporter spec
