@@ -7,7 +7,7 @@ scriptencoding utf-8
 let s:save_cpo = &cpo
 set cpo&vim
 
-let s:V = vital#of('vital')
+let s:V = vital#of('cistarterkit')
 let s:BigNum = s:V.import('Data.BigNum')
 
 " :DOCTEST https://github.com/Rykka/doctest.vim
