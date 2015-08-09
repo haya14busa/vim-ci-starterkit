@@ -1,6 +1,8 @@
 vim-ci-starterkit
 =================
 
+[![Build Status](https://travis-ci.org/haya14busa/vim-ci-starterkit.svg?branch=master)](https://travis-ci.org/haya14busa/vim-ci-starterkit)
+
 This project template is a skeleton for a Vim plugin development for CI
 
 ### Supported CI
