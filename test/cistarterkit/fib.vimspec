@@ -1,4 +1,4 @@
-Describe unit
+Describe cistarterkit/fib
 
   Before all
     let V = vital#of('vital')
