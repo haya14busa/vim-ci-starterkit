@@ -40,10 +40,10 @@ script:
   - vim --cmd version --cmd quit
   - vim --cmd "try | helptags doc/ | catch | cquit | endtry" --cmd quit
   # - sh /tmp/vim-vimlint/bin/vimlint.sh -l /tmp/vim-vimlint -p /tmp/vim-vimlparser -e EVL103=1 -e EVL102.l:_=1 -c func_abort=1 autoload
-  # - vint .
+  # - vint --color .
   # Do not execute lint for embetted vital. Please change {cistarterkit} to your plugin name
   - sh /tmp/vim-vimlint/bin/vimlint.sh -l /tmp/vim-vimlint -p /tmp/vim-vimlparser -e EVL103=1 -e EVL102.l:_=1 -c func_abort=1 autoload/cistarterkit.vim
   - sh /tmp/vim-vimlint/bin/vimlint.sh -l /tmp/vim-vimlint -p /tmp/vim-vimlparser -e EVL103=1 -e EVL102.l:_=1 -c func_abort=1 autoload/cistarterkit/
   - sh /tmp/vim-vimlint/bin/vimlint.sh -l /tmp/vim-vimlint -p /tmp/vim-vimlparser -e EVL103=1 -e EVL102.l:_=1 -c func_abort=1 plugin
-  - vint autoload/cistarterkit autoload/cistarterkit.vim plugin
+  - vint --color autoload/cistarterkit autoload/cistarterkit.vim plugin
   - /tmp/vim-themis/bin/themis --runtimepath /tmp/vital.vim --reporter spec
